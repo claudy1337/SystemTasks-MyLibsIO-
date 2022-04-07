@@ -16,7 +16,7 @@ namespace MyLibs
             string allowedchar = "«><:;''*,./|";
             if (!str.All(allowedchar.Contains))
             {
-                if (str.Length < 5 && (!string.IsNullOrEmpty(str)))
+                if (str.Length < 6 && (!string.IsNullOrEmpty(str)))
                 {
                     Console.Write($"{str}.txt:");
                     string write = Convert.ToString(Console.ReadLine());

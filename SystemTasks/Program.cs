@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MyLibs;
 using System.IO;
 
+
 namespace SystemTasks
 {
     internal class Program
@@ -14,6 +15,7 @@ namespace SystemTasks
         {
             try
             {
+                begLoop:
                 Console.Write("напишите комманду:");
                 string answer = Convert.ToString(Console.ReadLine()).ToLower();
                 switch (answer)
@@ -28,10 +30,11 @@ namespace SystemTasks
                         CloseApp closeApp = new CloseApp();
                         break;
                     case "restart":
-                       
+                       Restart restart = new Restart();
                         break;
                     default:
-                        break;
+                        goto begLoop;
+                        
 
                 }
 
