@@ -36,7 +36,6 @@ namespace MyLibs
             {
                 var info = new System.Diagnostics.ProcessStartInfo(Environment.GetCommandLineArgs()[0]);
                 System.Diagnostics.Process.Start(info);
-                
             }
            
             Console.ReadKey();
@@ -56,6 +55,14 @@ namespace MyLibs
         {
             Console.WriteLine("закрытие через...");
             Environment.Exit(5);
+        }
+    }
+    public class Restart
+    {
+        public Restart()
+        {
+            var info = new System.Diagnostics.ProcessStartInfo(Environment.GetCommandLineArgs()[0]);
+            System.Diagnostics.Process.Start(info);
         }
     }
 

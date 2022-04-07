@@ -28,8 +28,7 @@ namespace SystemTasks
                         CloseApp closeApp = new CloseApp();
                         break;
                     case "restart":
-                        var info = new System.Diagnostics.ProcessStartInfo(Environment.GetCommandLineArgs()[0]);
-                        System.Diagnostics.Process.Start(info);
+                       
                         break;
                     default:
                         break;
