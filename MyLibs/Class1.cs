@@ -11,15 +11,10 @@ namespace MyLibs
         public ReadIO()
         {
             Console.Write("file name:");
-            
-            string str = Console.ReadLine();
-            string allowedchar = "0123456789";
 
+            string str = Console.ReadLine();
+            string allowedchar = "«><:;''*,./|";
             if (!str.All(allowedchar.Contains))
-            {
-                Console.WriteLine("123323");
-            }
-            else
             {
                 if (str.Length < 5 && (!string.IsNullOrEmpty(str)))
                 {
@@ -34,9 +29,16 @@ namespace MyLibs
                         fileStream = File.Open(filePath, FileMode.Append);
                     StreamWriter output = new StreamWriter(fileStream);
                     output.Write(text);
+                    output.Close();
                 }
             }
-            //output.Close();
+            else
+            {
+                var info = new System.Diagnostics.ProcessStartInfo(Environment.GetCommandLineArgs()[0]);
+                System.Diagnostics.Process.Start(info);
+                
+            }
+           
             Console.ReadKey();
         }  
     }
