@@ -4,28 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
 namespace MyLibs
 {
     public class ReadIO
     {
-        
         public ReadIO()
         {
             Console.Write("file name:");
+            
             string str = Console.ReadLine();
-            Console.Write($"{str}.txt:");
-            string write = Convert.ToString(Console.ReadLine());
-            string filePath = @"D:\" + str + ".txt";
-            string text = write;
-            FileStream fileStream = null;
-            if (!File.Exists(filePath))
-                fileStream = File.Create(filePath);
+            string allowedchar = "0123456789";
+
+            if (!str.All(allowedchar.Contains))
+            {
+                Console.WriteLine("123323");
+            }
             else
-                fileStream = File.Open(filePath, FileMode.Append);
-            StreamWriter output = new StreamWriter(fileStream);
-            output.Write(text);
-            output.Close();
+            {
+                if (str.Length < 5 && (!string.IsNullOrEmpty(str)))
+                {
+                    Console.Write($"{str}.txt:");
+                    string write = Convert.ToString(Console.ReadLine());
+                    string filePath = @"D:\" + str + ".txt";
+                    string text = write;
+                    FileStream fileStream = null;
+                    if (!File.Exists(filePath))
+                        fileStream = File.Create(filePath);
+                    else
+                        fileStream = File.Open(filePath, FileMode.Append);
+                    StreamWriter output = new StreamWriter(fileStream);
+                    output.Write(text);
+                }
+            }
+            //output.Close();
+            Console.ReadKey();
         }  
     }
     public class Shutdow

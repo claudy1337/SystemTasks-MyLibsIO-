@@ -12,20 +12,35 @@ namespace SystemTasks
     {
         static void Main(string[] args)
         {
-            Console.Write("напишите комманду:");
-            string answer = Convert.ToString(Console.ReadLine());
-            if (answer == "read")
+            try
             {
-                ReadIO read = new ReadIO();
+                Console.Write("напишите комманду:");
+                string answer = Convert.ToString(Console.ReadLine()).ToLower();
+                switch (answer)
+                {
+                    case "read":
+                        ReadIO read = new ReadIO();
+                        break;
+                    case "shutdown":
+                        Shutdow shutdow = new Shutdow();
+                        break;
+                    case "close":
+                        CloseApp closeApp = new CloseApp();
+                        break;
+                    case "restart":
+                        var info = new System.Diagnostics.ProcessStartInfo(Environment.GetCommandLineArgs()[0]);
+                        System.Diagnostics.Process.Start(info);
+                        break;
+                    default:
+                        break;
+
+                }
+
+                Console.ReadKey();
             }
-            else if (answer == "shutdown")
+            catch (Exception ex)
             {
-                Shutdow shutdow = new Shutdow();
-                
-            }
-            else if(answer == "close")
-            {
-                CloseApp closeApp = new CloseApp();
+                Console.WriteLine("error" + ex.Message);
             }
             
         }
